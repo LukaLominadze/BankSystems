@@ -14,3 +14,5 @@ After cloning the repository, run ```setup-windows-vs.bat```,
 or if you are on linux, run ```setup-linux.sh```. 
 
 The project is now ready.
+
+Enjoy
