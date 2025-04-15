@@ -6,6 +6,4 @@ namespace BankSystems.Core
         public string Id { get; set; }
         public double Balance { get; set; }
     }
-
-
 }
