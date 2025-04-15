@@ -29,7 +29,7 @@ namespace BankSystems.Core
 
         public void RemoveBankAccount(string id)
         {
-            BankAccount acc = BankAccounts.FirstOrDefault(a => a.Id == id);
+            BankAccount? acc = BankAccounts.FirstOrDefault(a => a.Id == id);
 
             if (acc == null)
             {
@@ -45,7 +45,7 @@ namespace BankSystems.Core
             }
         }
 
-        public string GetPassword()
+        public string? GetPassword()
         {
             if (Tools.Role == Roles.User)
             {
