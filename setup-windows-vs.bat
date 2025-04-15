@@ -20,4 +20,5 @@ dotnet add BankSystems.ATM/BankSystems.ATM.csproj reference BankSystems.Core/Ban
 dotnet add BankSystems.Admin/BankSystems.Admin.csproj reference BankSystems.Core/BankSystems.Core.csproj
 
 dotnet add BankSystems.Core/BankSystems.Core.csproj package Newtonsoft.Json
+
 pause
