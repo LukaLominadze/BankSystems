@@ -14,14 +14,14 @@ account.RemoveBankAccount("5");
 
 Tools.WriteListToFile(new List<Account>() { account });
 
-List<Account> accs = Tools.ReadListFromFile();
+List<Account>? accs = Tools.ReadListFromFile();
 
 foreach (Account acc in accs)
 {
     Console.WriteLine(acc.Name);
 }
 
-string password = account.GetPassword();
+string? password = account.GetPassword();
 Console.WriteLine($"Acc Password -> {password}");
 
 //......deposit and transfer....//
@@ -31,7 +31,8 @@ while (true)
     Console.WriteLine("\nChoose operation you want to do");
     Console.WriteLine("1. Deposit");
     Console.WriteLine("2. Transfer");
-    Console.WriteLine("3. Exit\n");
+    Console.WriteLine("3. Withdraw");
+    Console.WriteLine("4. Exit\n");
 
     string? option = Console.ReadLine();
     switch (option)
@@ -47,6 +48,11 @@ while (true)
             Tools.TransferFromAccount(account.BankAccounts[0], account.BankAccounts[1], transferAmount);
             break;
         case "3":
+            Console.WriteLine("Enter amount to withdraw:");
+            double withdrawAmount = double.Parse(Console.ReadLine());
+            Tools.WithdrawFromAccount(account.BankAccounts[0], withdrawAmount);
+            break;
+        case "4":
             return;
         default:
             Console.WriteLine("Invalid option");

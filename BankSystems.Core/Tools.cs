@@ -26,7 +26,7 @@ namespace BankSystems.Core
 
         }
 
-        public static List<Account> ReadListFromFile()
+        public static List<Account>? ReadListFromFile()
         {
             string recievedJsonDataString = string.Empty;
 
@@ -40,7 +40,7 @@ namespace BankSystems.Core
                 return null;
             }
 
-            List<Account> accounts = JsonConvert.DeserializeObject<List<Account>>(recievedJsonDataString);
+            List<Account>? accounts = JsonConvert.DeserializeObject<List<Account>>(recievedJsonDataString);
 
             return accounts;
         }
@@ -77,6 +77,30 @@ namespace BankSystems.Core
             toAccount.Balance += amount;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Transferred {amount} from account {fromAccount.Id} to account {toAccount.Id}. New balance: {fromAccount.Balance}");
+            Console.ResetColor();
+        }
+
+
+        //....added withdraw method...//
+
+
+        public static void WithdrawFromAccount(BankAccount account, double amount)
+        {
+            if (amount <= 0)
+            {
+                Console.WriteLine("Withdraw amount must be positive.");
+                return;
+            }
+            if (account.Balance < amount)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Insufficient funds for withdrawal. Your balance is {account.Balance}");
+                Console.ResetColor();
+                return;
+            }
+            account.Balance -= amount;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Withdrew {amount} from account {account.Id}. New balance: {account.Balance}");
             Console.ResetColor();
         }
     }
